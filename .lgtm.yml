@@ -14,7 +14,6 @@ extraction:
         - dbus
         - gtk-doc-tools
         - libfuse-dev
-        - ostree
         - libostree-dev
         - libarchive-dev
         - libcap-dev
@@ -38,3 +37,12 @@ extraction:
         - libdconf-dev
         - socat
         - libdbus-1-dev
+      command:
+        - git clone https://github.com/ostreedev/ostree.git
+        - cd ostree
+        - git checkout v2020.8
+        - git submodule update --init
+        - env NOCONFIGURE=1 ./autogen.sh
+        - ./configure
+        - make
+        - make install
